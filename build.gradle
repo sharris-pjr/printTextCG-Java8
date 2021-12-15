@@ -1,23 +1,25 @@
 apply plugin: 'java'
 apply plugin: 'java-library'
 apply plugin: "application"
+apply plugin: 'eclipse'
 
 
 repositories {
     //jcenter()
+
     maven {
-        url 'https://soot-build.cs.uni-paderborn.de/nexus/repository/soot-release'
+    url "https://oss.sonatype.org/content/repositories/snapshots"
         mavenCentral()
-    }
-    maven {
-        url 'https://soot-build.cs.uni-paderborn.de/nexus/repository/soot-snapshot'
     }
 }
 
 dependencies {
     //compile group: 'ca.mcgill.sable',  name: 'java_cup',      version: '0.9.2'
     //compile group: 'ca.mcgill.sable',  name: 'polyglot',      version: '2006'
-    compile ('ca.mcgill.sable:soot:3.3.0')  
+    ///compile ('ca.mcgill.sable:soot:3.3.0')  
+            api ('org.soot-oss:soot:4.2.1') {
+                exclude group: 'ca.mcgill.sable', module: 'axmlprinter'
+            }
     compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.5'
 
 //exclude module: 'slf4j-api'
